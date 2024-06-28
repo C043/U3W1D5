@@ -9,10 +9,12 @@ class Home extends Component {
   render() {
     return (
       <>
-        <NetflixNav />;
+        <NetflixNav />
         <Container>
           <NetflixHeader />
           <NetflixGallery search="Harry Potter" />
+          <NetflixGallery search="Star Wars" />
+          <NetflixGallery search="Dahmer" />
         </Container>
         <NetflixFooter />
       </>
