@@ -1,10 +1,12 @@
 import { Component } from "react";
-import { Carousel, Col, Row, Spinner } from "react-bootstrap";
+import { Alert, Carousel, Col, Row, Spinner } from "react-bootstrap";
 
 class NetflixGallery extends Component {
   state = {
     movies: [],
     isLoaded: false,
+    hasError: false,
+    errorCode: "",
   };
 
   componentDidMount = async () => {
@@ -14,9 +16,11 @@ class NetflixGallery extends Component {
         const data = await resp.json();
         this.setState({ movies: await data.Search, isLoaded: true });
       } else {
-        throw new Error("Errore nel ritrovamento dati");
+        console.log(resp);
+        throw resp.status;
       }
     } catch (error) {
+      this.setState({ hasError: true, isLoaded: true, errorCode: error });
       console.log(error);
     }
   };
@@ -25,6 +29,13 @@ class NetflixGallery extends Component {
     return (
       <>
         <h2 className="h4">{this.props.search}</h2>
+        {this.state.hasError && (
+          <Alert className="d-flex justify-content-center" variant="danger">
+            <p className="m-0">
+              <span>Error</span> <b>{this.state.errorCode}</b>
+            </p>
+          </Alert>
+        )}
         {this.state.isLoaded ? (
           <Row className="g-1 grid mb-5 flex-nowrap py-3">
             {this.state.movies.map(movie => {
