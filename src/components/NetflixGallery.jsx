@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Alert, Carousel, Col, Row, Spinner } from "react-bootstrap";
+import { Alert, Col, Row, Spinner } from "react-bootstrap";
 
 class NetflixGallery extends Component {
   state = {

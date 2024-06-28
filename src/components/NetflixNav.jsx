@@ -23,7 +23,7 @@ const NetflixNav = () => {
             <BellFill />
             <DropdownButton
               drop={"down-centered"}
-              variant="dark"
+              variant="outline-light"
               title={<img src="./assets/img/kids_icon.png" alt="kids-logo" style={{ width: "30px" }} />}
               flip={true}
             >
