@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
 import Home from "./pages/Home";
 
