@@ -8,10 +8,11 @@ import Profile from "../components/Profile";
 import Settings from "../components/Settings";
 
 class Home extends Component {
+  /* Cambiare per vedere le altre due pagine */
   state = {
-    home: false,
+    home: true,
     profile: false,
-    settings: true,
+    settings: false,
   };
   render() {
     return (
