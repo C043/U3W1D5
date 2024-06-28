@@ -1,12 +1,21 @@
 import { Component } from "react";
 import { Alert, Col, Row, Spinner } from "react-bootstrap";
-
+import Slider from "react-slick";
+import "../../node_modules/slick-carousel/slick/slick.css";
+import "../../node_modules/slick-carousel/slick/slick-theme.css";
 class NetflixGallery extends Component {
   state = {
     movies: [],
     isLoaded: false,
     hasError: false,
     errorCode: "",
+    settings: {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 6,
+      slidesToScroll: 6,
+    },
   };
 
   componentDidMount = async () => {
@@ -36,19 +45,19 @@ class NetflixGallery extends Component {
             </p>
           </Alert>
         )}
-        {this.state.isLoaded ? (
-          <Row className="g-1 grid mb-5 flex-nowrap py-3">
-            {this.state.movies.map(movie => {
+        <Slider {...this.state.settings}>
+          {this.state.isLoaded ? (
+            this.state.movies.map(movie => {
               return (
-                <Col xs={6} md={3} lg={2}>
-                  <img src={movie.Poster} alt="movie-poster" />
-                </Col>
+                <div className="slick-item" key={movie.imdbID}>
+                  <img src={movie.Poster} alt="movie-poster" height={"100%"} />
+                </div>
               );
-            })}
-          </Row>
-        ) : (
-          <Spinner animation="border" variant="secondary" />
-        )}
+            })
+          ) : (
+            <Spinner animation="border" variant="secondary" />
+          )}
+        </Slider>
       </>
     );
   }
