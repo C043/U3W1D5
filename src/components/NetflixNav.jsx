@@ -11,13 +11,13 @@ const NetflixNav = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home" active>
+            <Nav.Link href="#link" active>
               Home
             </Nav.Link>
-            <Nav.Link href="#link">Tv Shows</Nav.Link>
-            <Nav.Link href="#link">Movies</Nav.Link>
-            <Nav.Link href="#link">Recently Added</Nav.Link>
-            <Nav.Link href="#link">My List</Nav.Link>
+            <Nav.Link href="#">Tv Shows</Nav.Link>
+            <Nav.Link href="#">Movies</Nav.Link>
+            <Nav.Link href="#">Recently Added</Nav.Link>
+            <Nav.Link href="#">My List</Nav.Link>
           </Nav>
           <div className="d-flex gap-2 align-items-center">
             <Search />
