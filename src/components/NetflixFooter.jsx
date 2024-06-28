@@ -3,7 +3,7 @@ import { Facebook, Instagram, TwitterX, X, Youtube } from "react-bootstrap-icons
 const NetflixFooter = () => {
   return (
     <footer>
-      <div className="container">
+      <div className="container mt-5">
         <div className="icons d-flex">
           <Facebook className="text-secondary me-3" />
           <Instagram className="text-secondary me-3" />

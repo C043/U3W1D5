@@ -5,12 +5,13 @@ import { Container } from "react-bootstrap";
 import NetflixHeader from "../components/NetflixHeader";
 import NetflixGallery from "../components/NetflixGallery";
 import Profile from "../components/Profile";
+import Settings from "../components/Settings";
 
 class Home extends Component {
   state = {
     home: false,
-    profile: true,
-    settings: false,
+    profile: false,
+    settings: true,
   };
   render() {
     return (
@@ -29,6 +30,7 @@ class Home extends Component {
             <Profile />
           </Container>
         )}
+        {this.state.settings && <Settings />}
         <NetflixFooter />
       </>
     );
