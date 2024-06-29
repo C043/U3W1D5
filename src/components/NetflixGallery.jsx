@@ -13,11 +13,11 @@ class NetflixGallery extends Component {
       dots: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 6,
-      slidesToScroll: 6,
+      slidesToShow: 7,
+      slidesToScroll: 7,
       responsive: [
         {
-          breakpoint: 1024,
+          breakpoint: 1025,
           settings: {
             slidesToShow: 5,
             slidesToScroll: 5,
