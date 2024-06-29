@@ -6,7 +6,6 @@ import "../../node_modules/slick-carousel/slick/slick-theme.css";
 import NetflixModal from "./NetflixModal";
 class NetflixGallery extends Component {
   state = {
-    modal: false,
     movies: [],
     isLoaded: false,
     hasError: false,
@@ -84,9 +83,13 @@ class NetflixGallery extends Component {
           <Slider {...this.state.settings}>
             {this.state.movies.map(movie => {
               return (
-                <div className="slick-item" key={movie.imdbID} onClick={() => this.setState({ modal: true })}>
-                  <img src={movie.Poster} alt="movie-poster" height={"100%"} />
-                  {this.state.modal && <NetflixModal imdbID={movie.imdbID} />}
+                <div className="slick-item" key={movie.imdbID}>
+                  <img
+                    src={movie.Poster}
+                    alt="movie-poster"
+                    onClick={() => this.setState({ [movie.imdbID]: true, modal: true })}
+                  />
+                  {this.state[movie.imdbID] && <NetflixModal imdbID={movie.imdbID} show={this.state.modal} />}
                 </div>
               );
             })}
