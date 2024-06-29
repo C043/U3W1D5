@@ -45,19 +45,19 @@ class NetflixGallery extends Component {
             </p>
           </Alert>
         )}
-        <Slider {...this.state.settings}>
-          {this.state.isLoaded ? (
-            this.state.movies.map(movie => {
+        {this.state.isLoaded ? (
+          <Slider {...this.state.settings}>
+            {this.state.movies.map(movie => {
               return (
                 <div className="slick-item" key={movie.imdbID}>
                   <img src={movie.Poster} alt="movie-poster" height={"100%"} />
                 </div>
               );
-            })
-          ) : (
-            <Spinner animation="border" variant="secondary" />
-          )}
-        </Slider>
+            })}
+          </Slider>
+        ) : (
+          <Spinner animation="border" variant="secondary" />
+        )}
       </>
     );
   }
