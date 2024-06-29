@@ -11,18 +11,15 @@ body {
 }
 
 .slick-list {
-  overflow-x: hidden;
-  overflow-y: hidden;
-  display: flex;
-  align-items: stretch;
   img {
     width: 100%;
-    height: 100%;
+    height: 330px;
     object-fit: cover;
     transition: all 300ms;
     &:hover {
-      scale: 1.05;
+      scale: 1.03;
       cursor: pointer;
+      z-index: 99999;
     }
   }
 }
