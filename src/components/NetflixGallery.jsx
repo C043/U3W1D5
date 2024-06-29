@@ -3,8 +3,10 @@ import { Alert, Col, Row, Spinner } from "react-bootstrap";
 import Slider from "react-slick";
 import "../../node_modules/slick-carousel/slick/slick.css";
 import "../../node_modules/slick-carousel/slick/slick-theme.css";
+import NetflixModal from "./NetflixModal";
 class NetflixGallery extends Component {
   state = {
+    modal: false,
     movies: [],
     isLoaded: false,
     hasError: false,
@@ -13,11 +15,11 @@ class NetflixGallery extends Component {
       dots: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 6,
-      slidesToScroll: 6,
+      slidesToShow: 7,
+      slidesToScroll: 7,
       responsive: [
         {
-          breakpoint: 1024,
+          breakpoint: 1025,
           settings: {
             slidesToShow: 5,
             slidesToScroll: 5,
@@ -45,6 +47,10 @@ class NetflixGallery extends Component {
         },
       ],
     },
+  };
+
+  handleModal = movieId => {
+    return;
   };
 
   componentDidMount = async () => {
@@ -78,8 +84,9 @@ class NetflixGallery extends Component {
           <Slider {...this.state.settings}>
             {this.state.movies.map(movie => {
               return (
-                <div className="slick-item" key={movie.imdbID} style={{ height: "500px" }}>
+                <div className="slick-item" key={movie.imdbID} onClick={() => this.setState({ modal: true })}>
                   <img src={movie.Poster} alt="movie-poster" height={"100%"} />
+                  {this.state.modal && <NetflixModal imdbID={movie.imdbID} />}
                 </div>
               );
             })}
