@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Alert, Col, Row, Spinner } from "react-bootstrap";
+import { Alert, Spinner } from "react-bootstrap";
 import Slider from "react-slick";
 import "../../node_modules/slick-carousel/slick/slick.css";
 import "../../node_modules/slick-carousel/slick/slick-theme.css";

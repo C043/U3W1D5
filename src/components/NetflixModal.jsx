@@ -2,7 +2,9 @@ import { Component } from "react";
 import { Button, Modal } from "react-bootstrap";
 
 class NetflixModal extends Component {
-  state = {};
+  state = {
+    show: true,
+  };
 
   componentDidMount = async () => {
     try {
@@ -20,18 +22,23 @@ class NetflixModal extends Component {
 
   render() {
     return (
-      <div className="modal show position-absolute top-0" style={{ display: "block", position: "initial" }}>
+      <div
+        className={this.state.show ? "modal show position-absolute top-0" : ""}
+        style={{ display: "block", position: "initial" }}
+      >
         <Modal.Dialog>
           <Modal.Header closeButton>
-            <Modal.Title>Test</Modal.Title>
+            <Modal.Title>{this.state.movie && this.state.movie.Title}</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
-            <p>Test</p>
+            <p>{this.state.movie && this.state.movie.Plot}</p>
           </Modal.Body>
 
           <Modal.Footer>
-            <Button variant="secondary">Close</Button>
+            <Button variant="secondary" onClick={() => this.setState({ show: false })}>
+              Close
+            </Button>
           </Modal.Footer>
         </Modal.Dialog>
       </div>
