@@ -48,10 +48,6 @@ class NetflixGallery extends Component {
     },
   };
 
-  handleModal = movieId => {
-    return;
-  };
-
   componentDidMount = async () => {
     try {
       const resp = await fetch("http://www.omdbapi.com/?apikey=bcfdeef7&s=" + this.props.search);
@@ -88,10 +84,13 @@ class NetflixGallery extends Component {
                     src={movie.Poster}
                     alt="movie-poster"
                     onClick={() =>
-                      this.setState(prevState => ({ [movie.imdbID]: !prevState[movie.imdbID], modal: true }))
+                      this.setState(prevState => ({
+                        [movie.imdbID]: !prevState[movie.imdbID],
+                        modal: true,
+                      }))
                     }
                   />
-                  {this.state[movie.imdbID] && <NetflixModal imdbID={movie.imdbID} show={this.state.modal} />}
+                  {this.state[movie.imdbID] && <NetflixModal imdbID={movie.imdbID} />}
                 </div>
               );
             })}

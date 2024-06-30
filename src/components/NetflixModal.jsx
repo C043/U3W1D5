@@ -3,13 +3,12 @@ import { Button, Modal, Spinner } from "react-bootstrap";
 
 class NetflixModal extends Component {
   state = {
-    show: this.props.show,
+    show: true,
     movie: {},
     isLoading: true,
   };
 
   handleClose = () => this.setState(prevState => ({ show: !prevState.show }));
-  handleShow = () => this.setState({ show: true });
 
   componentDidMount = async () => {
     try {
@@ -26,35 +25,41 @@ class NetflixModal extends Component {
   };
 
   render() {
-    return (
-      <div
-        className={this.state.show ? "modal show position-absolute top-0 " : "d-none"}
-        style={{ display: "block", position: "initial" }}
-      >
-        <Modal show={this.state.show} onHide={() => this.handleClose()}>
-          <Modal.Header>
-            <Modal.Title>{this.state.movie.Title}</Modal.Title>
-          </Modal.Header>
+    if (!this.state.isLoading) {
+      console.log("RENDER");
+      return (
+        <div
+          className={this.state.show ? "modal show position-absolute top-0 " : "d-none"}
+          style={{ display: "block", position: "initial" }}
+        >
+          <Modal show={this.state.show} onHide={() => this.handleClose()}>
+            <Modal.Header>
+              <Modal.Title>{this.state.movie.Title}</Modal.Title>
+            </Modal.Header>
 
-          <Modal.Body className="d-flex gap-1 justify-content-center align-items-center">
-            {this.state.isLoading ? (
-              <Spinner animation="border" variant="secondary" />
-            ) : (
-              <>
-                <img className="flex-shrink-1" src={this.state.movie.Poster} alt="movie-poster" />
-                <p>{this.state.movie.Plot}</p>
-              </>
-            )}
-          </Modal.Body>
+            <Modal.Body className="d-flex gap-1 justify-content-center align-items-center">
+              {this.state.isLoading ? (
+                <Spinner animation="border" variant="secondary" />
+              ) : (
+                <>
+                  <img className="flex-shrink-1" src={this.state.movie.Poster} alt="movie-poster" />
+                  <p>{this.state.movie.Plot}</p>
+                </>
+              )}
+            </Modal.Body>
 
-          <Modal.Footer>
-            <Button variant="secondary" onClick={() => this.handleClose()}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </div>
-    );
+            <Modal.Footer>
+              <Button variant="secondary" onClick={() => this.handleClose()}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
+      );
+    } else {
+      console.log("NO RENDER");
+      return <Spinner />;
+    }
   }
 }
 
