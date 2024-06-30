@@ -38,7 +38,7 @@ class NetflixModal extends Component {
 
           <Modal.Body className="d-flex gap-1 justify-content-center align-items-center">
             {this.state.isLoading ? (
-              <Spinner />
+              <Spinner animation="border" variant="secondary" />
             ) : (
               <>
                 <img className="flex-shrink-1" src={this.state.movie.Poster} alt="movie-poster" />

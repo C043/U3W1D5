@@ -87,7 +87,9 @@ class NetflixGallery extends Component {
                   <img
                     src={movie.Poster}
                     alt="movie-poster"
-                    onClick={() => this.setState({ [movie.imdbID]: true, modal: true })}
+                    onClick={() =>
+                      this.setState(prevState => ({ [movie.imdbID]: !prevState[movie.imdbID], modal: true }))
+                    }
                   />
                   {this.state[movie.imdbID] && <NetflixModal imdbID={movie.imdbID} show={this.state.modal} />}
                 </div>
